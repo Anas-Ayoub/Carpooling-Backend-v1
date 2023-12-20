@@ -18,9 +18,9 @@ this project is a carpooling solution designed to connect like-minded travelers,
 
 ## Demo
 
-![Demo Image 1](images/Screenshot (34).png)
+![Demo Image 1](images/Screenshot.png)
 *Passengers*
 
-![Demo Image 2](images/Screenshot (34).png)
+![Demo Image 2](images/Screenshot1.png)
 *Passengers*
 
