@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thymeleaf with JavaScript Example</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf/turf.min.js"></script>
+    <script src="https://kit.fontawesome.com/71438eaaf7.js" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script id="search-js" defer="" src="https://api.mapbox.com/search-js/v1.0.0-beta.18/web.js"></script>
+</head>
+<body>
+<div class="side-div">
+
+    <button id="btnCreateTrip"class="btn btn-info" type="button" onclick="createTrip()">Create Trip</button>
+
+    <div class="source-input-container">
+        <input id="txtSource" type="text" placeholder="Source point">
+        <button id="btnSource" onclick="chooseSource()">Choose on map</button>
+    </div>
+    <div class="destination-input-container">
+        <input id="txtDestination" type="text" placeholder="Destination Point">
+        <button id="btnDestination" onclick="chooseDestination()">Choose on map</button>
+    </div>
+    <input id="txtCar" type="text" placeholder="Car" value="Dacia">
+    <button class="btn btn-info" type="button" onclick="getAvailableRoutes()">Fetch Routes</button>
+    <button type="button" class="btn btn-outline-info" onclick="postTrip()">POST ROUTE</button>
+    <button type="button" class="btn btn-outline-info" onclick="filterRoutes()">Filter By 1Km</button>
+</div>
+
+<div class="main-content">
+    <div id="map"></div>
+    <p>Main content goes here.</p>
+</div>
+
+
+    <script th:src="@{/js/mapBoxInitializer.js}"></script>
+    <script th:src="@{/js/getOptimizedRoute.js}"></script>
+    <!--<script th:src="@{/js/nearstNode.js}"></script>-->
+    <script th:src="@{/js/updateRoute.js}"></script>
+    <script th:src="@{/js/TripCreator.js}"></script>
+    <script th:src="@{/js/userLocation.js}"></script>
+    <script th:src="@{/js/mapDB.js}"></script>
+    <script th:src="@{/js/RouteRemover.js}"></script>
+</body>
+</html>

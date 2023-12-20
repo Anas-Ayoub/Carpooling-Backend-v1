@@ -1,0 +1,94 @@
+body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Use flexbox to arrange side div and main content */
+}
+
+#map {   position: absolute;
+    left: 33.3333%; /* This should match the width of the sidebar */
+    width: 66.6666%; /* This should be 100% - the width of the sidebar */
+    top: 0;
+    bottom: 0;}
+.side-div {
+    position: absolute;
+    width: 33.3333%; /* Adjust this to set the width of the sidebar */
+    height: 100vh;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    border-right: 1px solid rgb(0 0 0 / 25%);
+    background-color: #14011d;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.side-div button,
+.side-div p,
+.side-div a {
+    margin-bottom: 10px; /* Add margin between elements for spacing */
+    padding: 8px;
+    border: none;
+    color: white;
+    background-color: #555;
+    text-align: left; /* Align text to the left */
+    margin-top: auto; /* Push the button to the bottom */
+    width: 100%;
+}
+#btnCreateTrip {
+
+}
+.side-div p {
+    font-family: 'Lucida Console', sans-serif; /* Specify the desired font */
+    color: white; /* Set the text color to white */
+}
+
+.main-content {
+    flex: 1; /* Take remaining width */
+    padding: 20px; /* Add padding for better appearance */
+}
+
+.sourceIcon {
+  background-image: url('https://cdn.discordapp.com/attachments/589170234674511895/1183177617491378197/car.png');
+  background-size: 100%;
+  width: 35px;
+  height: 35px;
+}
+
+.destIcon {
+  background-image: url('https://cdn.discordapp.com/attachments/1183450094566125658/1184467509819224064/flagPNG.png');
+  background-size: 100%;
+  width: 35px;;
+  height: 35px;
+}
+
+.stickManIcon {
+    background-size: 100%;
+    width: 70px;;
+    height: 70px;
+}
+.mapboxgl-popup {
+    max-width: 200px;
+    padding-bottom: 20px;
+}
+
+.mapboxgl-popup-content {
+    text-align: center;
+    background-color:aqua;
+    line-height: 0.5;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+/*
+.mapboxgl-popup-close-button {
+    background-image: url('https://cdn.discordapp.com/attachments/1183450094566125658/1186011908554375228/close.png');
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+*/
+hr {
+    border: 1px solid #9b9b9b;
+    margin: 20px 0;
+}
+i {
+    padding-right: 8px
+}
