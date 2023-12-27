@@ -27,6 +27,12 @@ public class TripController {
         return tripService.getAllTrips();
     }
 
+    @GetMapping("/login")
+    public ResponseEntity<String> get() {
+        String message = "In Spring BOOT BACK END";
+        return ResponseEntity.ok().body("{\"message\": \"" + message + "\"}");
+    }
+
     @GetMapping("/{id}")
     public Trip getTripById(@PathVariable String id) {
         return tripService.getPassengerById(id);
