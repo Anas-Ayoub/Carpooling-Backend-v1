@@ -12,6 +12,7 @@ public class UserService {
     private UserRepository userRepository;
 
     public boolean authenticateUser(String email, String password) {
+        System.out.println(email+ " | "+ password);
         UserEntity user = userRepository.findByEmail(email);
         return user != null && user.getPassword().equals(password);
     }

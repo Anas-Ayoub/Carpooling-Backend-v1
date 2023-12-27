@@ -22,9 +22,8 @@ public class LoginController {
         String password = credentials.getPassword();
 
         boolean isAuthenticated = userService.authenticateUser(email, password);
-        System.out.println(isAuthenticated);
         if (isAuthenticated) {
-            return "{\"message\": \"User found.\"}";
+            return "{\"message\": \"User Found, Welcome!\"}";
         } else {
             return "{\"message\": \"User not found or incorrect credentials.\"}";
         }
