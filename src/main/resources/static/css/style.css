@@ -92,3 +92,7 @@ hr {
 i {
     padding-right: 8px
 }
+
+input {
+    width: 300px
+}

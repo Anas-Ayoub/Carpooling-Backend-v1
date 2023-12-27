@@ -71,7 +71,7 @@ map.on('click', function(e) {
 
 function chooseSource()
 {
-    alert("Choose a Source Point on map");
+    //alert("Choose a Source Point on map");
 
     map.once('click', (event) => {
         if (sMarker !== undefined)
@@ -81,7 +81,10 @@ function chooseSource()
         let lng = event.lngLat.lng;
         let lat = event.lngLat.lat;
         srcPoint = [lng,lat];
-        let txtSrc = document.getElementById("txtSource").value = `${lng}, ${lat}`;
+
+        getLocationName(lat, lng).then((val) => {
+            document.getElementById("txtSource").value = val;
+        });
 
         const srcIconEle = document.createElement('div');
         srcIconEle.className = 'sourceIcon'
@@ -118,7 +121,10 @@ function chooseDestination()
         let lng = event.lngLat.lng;
         let lat = event.lngLat.lat;
         destPoint = [lng,lat];
-        document.getElementById("txtDestination").value = `${lng}, ${lat}`;
+
+        getLocationName(lat, lng).then((val) => {
+            document.getElementById("txtDestination").value = val;
+        });
 
         const destIconEle = document.createElement('div');
         destIconEle.className = 'destIcon';
