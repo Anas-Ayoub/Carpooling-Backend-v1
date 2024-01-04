@@ -9,13 +9,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "users")
+@Document(collection = "user")
 public class UserEntity {
 
     @Id
     private String id;
     private String email;
     private String password;
+    private String role;
 
-    // Getters, setters, constructors, etc.
 }

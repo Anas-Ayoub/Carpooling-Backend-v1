@@ -9,6 +9,4 @@ import lombok.*;
 public class UserCredentials {
     private String email;
     private String password;
-
-    // Getters, setters, constructors, etc.
 }

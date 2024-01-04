@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 public class LoginController {
 
@@ -17,17 +20,20 @@ public class LoginController {
     private UserService userService;
 
     @PostMapping("/login")
-    public String authenticateUser(@RequestBody UserCredentials credentials) {
+    public Map<String, Object> authenticateUser(@RequestBody UserCredentials credentials) {
+        Map<String, Object> response = new HashMap<>();
         String email = credentials.getEmail();
         String password = credentials.getPassword();
-
         boolean isAuthenticated = userService.authenticateUser(email, password);
-        System.out.println(isAuthenticated);
+
+        response.put("success", isAuthenticated);
         if (isAuthenticated) {
-            return "{\"message\": \"User found.\"}";
+            response.put("message", "User Found, Welcome!");
         } else {
-            return "{\"message\": \"User not found or incorrect credentials.\"}";
+            response.put("message", "Credentials is not valid");
         }
+
+        return response;
     }
 
     @PostMapping("/addUser")
