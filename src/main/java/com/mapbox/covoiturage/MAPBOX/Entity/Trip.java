@@ -16,14 +16,16 @@ public class Trip {
 
     @Id
     private String id;
-    private List<Double> source;
-    private List<Double> destination;
+    @DBRef
+    private Node source;
+    @DBRef
+    private Node destination;
     private String carModel;
     private Date startDate;
 
 
     //private List<List<Double>> Coordination;
-    private List<List<Double>> route;
+    private List<Node> route;
 
     @DBRef
     private Driver driver;
