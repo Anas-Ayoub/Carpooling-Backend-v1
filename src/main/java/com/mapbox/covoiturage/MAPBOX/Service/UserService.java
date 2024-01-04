@@ -11,9 +11,10 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public boolean authenticateUser(String email, String password) {
-        UserEntity user = userRepository.findByEmail(email);
-        return user != null && user.getPassword().equals(password);
+    public UserEntity authenticateUser(UserEntity user) {
+        UserEntity usr = userRepository.findByEmailAndPassword(user.getEmail(),user.getPassword());
+        
+        return usr;
     }
 
     public UserEntity createUser(UserEntity user) {
