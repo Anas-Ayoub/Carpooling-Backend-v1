@@ -34,7 +34,7 @@ public class LoginController {
         //     return "{\"message\": \"User found.\"}";
         // } else {
         //     return "{\"message\": \"User not found or incorrect credentials.\"}";
-        // }
+    }
     /*public Map<String, Object> authenticateUser(@RequestBody UserCredentials credentials) {
         Map<String, Object> response = new HashMap<>();
         String email = credentials.getEmail();

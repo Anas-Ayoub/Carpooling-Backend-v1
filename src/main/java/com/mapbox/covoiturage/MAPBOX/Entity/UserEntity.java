@@ -20,8 +20,7 @@ public class UserEntity {
     private String id;
     private String email;
     private String password;
-    private String role;
-
+    
     @DBRef
     private List<Role> roles;
 }

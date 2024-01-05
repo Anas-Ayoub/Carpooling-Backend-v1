@@ -21,9 +21,5 @@ public class Passenger {
     private String username;
     private String email;
     private String phone;
-
-    @DBRef
-    private User user;
-
-    private List<Double> location;
+    private Node location;
 }

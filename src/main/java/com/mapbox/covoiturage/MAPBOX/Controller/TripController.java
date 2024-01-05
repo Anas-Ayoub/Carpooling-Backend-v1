@@ -38,28 +38,28 @@ public class TripController {
         return tripService.getPassengerById(id);
     }
 
-    @PostMapping("/saveTrip")
+    @PostMapping("/")
     public Trip createTrip(@RequestBody Trip trip) {
-        System.out.println("in PostMapping");
         return tripService.createTrip(trip);
     }
 
     @PutMapping("/updateTrip")
     public ResponseEntity<Trip> updateTripe(@RequestBody Trip trip)
     {
-        Optional<Trip> optionalTrip = tripService.getTripById(trip.getId());
-        if (optionalTrip.isPresent())
-        {
-            Trip existingTrip = optionalTrip.get(); // Kanjibo Trip li deja kayna
-            existingTrip.setRoute(trip.getRoute());
-            existingTrip.setPassenger(trip.getPassenger());
+        // Optional<Trip> optionalTrip = tripService.getTripById(trip.getId());
+        // if (optionalTrip.isPresent())
+        // {
+        //     Trip existingTrip = optionalTrip.get(); // Kanjibo Trip li deja kayna
+        //     existingTrip.setRoute(trip.getRoute());
+        //     existingTrip.setPassenger(trip.getPassenger());
 
-            return new ResponseEntity<>(tripService.createTrip(existingTrip), HttpStatus.OK);
-        }
-        else
-        {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        //     return new ResponseEntity<>(tripService.createTrip(existingTrip), HttpStatus.OK);
+        // }
+        // else
+        // {
+        //     return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        // }
+        return null;
     }
 
 }
