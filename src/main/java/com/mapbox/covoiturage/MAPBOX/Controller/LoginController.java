@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 public class LoginController {
 
@@ -31,8 +34,22 @@ public class LoginController {
         //     return "{\"message\": \"User found.\"}";
         // } else {
         //     return "{\"message\": \"User not found or incorrect credentials.\"}";
-        // }
     }
+    /*public Map<String, Object> authenticateUser(@RequestBody UserCredentials credentials) {
+        Map<String, Object> response = new HashMap<>();
+        String email = credentials.getEmail();
+        String password = credentials.getPassword();
+        boolean isAuthenticated = userService.authenticateUser(email, password);
+
+        response.put("success", isAuthenticated);
+        if (isAuthenticated) {
+            response.put("message", "User Found, Welcome!");
+        } else {
+            response.put("message", "Credentials is not valid");
+        }
+
+        return response;
+    }*/
 
     @PostMapping("/addUser")
     public ResponseEntity<UserEntity> createUser(@RequestBody UserEntity user) {
