@@ -28,4 +28,9 @@ public class DriverService {
     public void deleteDriver(String id) {
         driverRepository.deleteById(id);
     }
+
+    public Driver getDriverByUserId(String id){
+
+        return driverRepository.findByUserId(id);
+    }
 }

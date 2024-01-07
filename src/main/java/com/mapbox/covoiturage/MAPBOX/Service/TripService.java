@@ -1,5 +1,6 @@
 package com.mapbox.covoiturage.MAPBOX.Service;
 
+import com.mapbox.covoiturage.MAPBOX.Entity.Driver;
 import com.mapbox.covoiturage.MAPBOX.Entity.Trip;
 import com.mapbox.covoiturage.MAPBOX.Repository.TripRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,9 @@ import java.util.Optional;
 @Service
 public class TripService {
     private final TripRepo tripRepository;
+    
+    @Autowired
+    private DriverService driverService;
 
     @Autowired
     public TripService(TripRepo tripRepository) {
@@ -32,5 +36,10 @@ public class TripService {
 
     public Trip getPassengerById(String id) {
         return tripRepository.findById(id).orElse(null);
+    }
+
+    public Trip getTripByDriverUserId(String id){
+        Driver driver = driverService.getDriverByUserId(id);
+        return tripRepository.findByDriver(driver).getFirst();
     }
 }

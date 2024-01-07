@@ -1,7 +1,9 @@
 package com.mapbox.covoiturage.MAPBOX.Controller;
 
+import com.mapbox.covoiturage.MAPBOX.Entity.Driver;
 import com.mapbox.covoiturage.MAPBOX.Entity.Passenger;
 import com.mapbox.covoiturage.MAPBOX.Entity.Trip;
+import com.mapbox.covoiturage.MAPBOX.Service.DriverService;
 import com.mapbox.covoiturage.MAPBOX.Service.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,13 +19,16 @@ public class TripController {
     private final TripService tripService;
 
     @Autowired
+    DriverService driverService;
+
+    @Autowired
     public TripController(TripService tripService) {
         this.tripService = tripService;
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("/")
     public List<Trip>getAllTrips() {
-        System.out.println("in GetMapping");
+        // System.out.println("in GetMapping");
         return tripService.getAllTrips();
     }
 
@@ -38,8 +43,20 @@ public class TripController {
         return tripService.getPassengerById(id);
     }
 
+    @GetMapping("/drivers/users/{id}")
+    public Trip getTripByDriverUserId(@PathVariable String id) {
+        return tripService.getTripByDriverUserId(id);
+    }
+
     @PostMapping("/")
-    public Trip createTrip(@RequestBody Trip trip) {
+    public Trip createTrip(
+        @RequestBody Trip trip,
+        @RequestHeader(name = "Authorization", required = false) String authorizationHeader) {
+
+
+        Driver d = driverService.getDriverByUserId(authorizationHeader);
+
+        trip.setDriver(d);
         return tripService.createTrip(trip);
     }
 

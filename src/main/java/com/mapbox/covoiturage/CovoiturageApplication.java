@@ -47,18 +47,26 @@ public class CovoiturageApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Driver d = driverRep.save(new Driver(null,"name 1","email1","tel1"));
-
-
-		Passenger p = passengerRep.save(new Passenger(null,"name 1","email 1","phone 1",new Node(12d,21d,"")));
 
 		Role r = roleRepo.save(new Role(null,"driver"));
 
 		UserEntity u = userRepo.save(new UserEntity(null,"email","1234",List.of(r)));
 
+		UserEntity u2 = userRepo.save(new UserEntity(null,"email2","12345",List.of(r)));
+
+		Driver d = driverRep.save(new Driver(null,"name 1","email1","tel1",u));
+
+		Driver d2 = driverRep.save(new Driver(null,"name 2","email2","tel2",u2));
+
+
+		Passenger p = passengerRep.save(new Passenger(null,"name 1","email 1","phone 1",new Node(12d,21d,"")));
+
+
 		// // tripRepo.save(new Trip(null, n, n, "car 1", new Date(),List.of(n), d, List.of(p)));
 
-		tripRepo.save(new Trip(null, new Node(12d,21d,""), new Node(12d,21d,""), (short)5, new Date().toString(),13.5f, List.of()));
+		// tripRepo.save(new Trip(null, new Node(12d,21d,""), new Node(12d,21d,""), (short)5, new Date().toString(),13.5f,true, List.of(),d));
+
+		// tripRepo.save(new Trip(null, new Node(12d,21d,""), new Node(12d,21d,""), (short)7, new Date().toString(),13.5f,true, List.of(),d2));
 	}
 
 }
