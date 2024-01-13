@@ -45,6 +45,8 @@ public class TripController {
 
     @GetMapping("/drivers/users/{id}")
     public Trip getTripByDriverUserId(@PathVariable String id) {
+
+
         return tripService.getTripByDriverUserId(id);
     }
 
@@ -56,7 +58,15 @@ public class TripController {
 
         Driver d = driverService.getDriverByUserId(authorizationHeader);
 
+        Boolean isDriverHasOpenTrip=tripService.getTripByDriverUserId(d.getId())!=null;
+
+        if(isDriverHasOpenTrip)
+            return null;
+
+        
         trip.setDriver(d);
+
+
         return tripService.createTrip(trip);
     }
 

@@ -31,6 +31,8 @@ public class Trip {
     @DBRef
     private Driver driver;
 
+    @DBRef
+    private List<Passenger> pendingPassengers;
     // @DBRef
     // private List<Passenger> passenger;
 }

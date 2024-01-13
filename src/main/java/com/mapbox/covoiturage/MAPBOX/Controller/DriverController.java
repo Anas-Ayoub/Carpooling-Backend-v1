@@ -14,13 +14,14 @@ public class DriverController {
     @Autowired
     private DriverService driverService;
 
-    @GetMapping("/getAll")
+    @GetMapping("/")
     public List<Driver> getAllDrivers() {
         return driverService.getAllDrivers();
     }
 
-    @GetMapping("/getById/{id}")
+    @GetMapping("/{id}")
     public Driver getDriverById(@PathVariable String id) {
+        System.out.println(id);
         return driverService.getDriverById(id);
     }
 

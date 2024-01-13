@@ -23,6 +23,11 @@ public class PassengerController {
         return passengerService.getPassagerById(id);
     }
 
+    @GetMapping("/users/{id}")
+    public Passenger getPassengerByUserId(@PathVariable String id) {
+        return passengerService.getPassengerByUserId(id);
+    }
+
     @PostMapping("/savePassenger")
     public Passenger createPassenger(@RequestBody Passenger passenger) {
         return passengerService.createPassager(passenger);

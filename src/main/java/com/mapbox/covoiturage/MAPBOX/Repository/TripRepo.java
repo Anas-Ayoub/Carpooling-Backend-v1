@@ -11,5 +11,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TripRepo extends MongoRepository<Trip, String> {
-    List<Trip> findByDriver(Driver driver);
+    List<Trip> findByDriverAndIsOpen(Driver driver,Boolean isOpen);
+    
 }

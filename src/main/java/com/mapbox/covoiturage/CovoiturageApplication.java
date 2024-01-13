@@ -49,17 +49,18 @@ public class CovoiturageApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		Role r = roleRepo.save(new Role(null,"driver"));
+		Role r2 = roleRepo.save(new Role(null,"passanger"));
 
 		UserEntity u = userRepo.save(new UserEntity(null,"email","1234",List.of(r)));
 
-		UserEntity u2 = userRepo.save(new UserEntity(null,"email2","12345",List.of(r)));
+		UserEntity u2 = userRepo.save(new UserEntity(null,"email2","12345",List.of(r2)));
 
 		Driver d = driverRep.save(new Driver(null,"name 1","email1","tel1",u));
 
-		Driver d2 = driverRep.save(new Driver(null,"name 2","email2","tel2",u2));
+		// Driver d2 = driverRep.save(new Driver(null,"name 2","email2","tel2",u2));
 
 
-		Passenger p = passengerRep.save(new Passenger(null,"name 1","email 1","phone 1",new Node(12d,21d,"")));
+		Passenger p = passengerRep.save(new Passenger(null,"name 1","email 1","phone 1",new Node(12d,21d,""),u2));
 
 
 		// // tripRepo.save(new Trip(null, n, n, "car 1", new Date(),List.of(n), d, List.of(p)));

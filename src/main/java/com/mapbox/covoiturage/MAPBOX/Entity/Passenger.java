@@ -22,4 +22,7 @@ public class Passenger {
     private String email;
     private String phone;
     private Node location;
+
+    @DBRef
+    private UserEntity user;
 }

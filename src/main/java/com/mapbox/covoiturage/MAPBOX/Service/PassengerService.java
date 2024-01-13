@@ -20,6 +20,12 @@ public class PassengerService {
         return passengerRepository.findById(id).orElse(null);
     }
 
+    public Passenger getPassengerByUserId(String id) {
+        return passengerRepository.findByUserId(id);
+    }
+
+    
+
     public Passenger createPassager(Passenger passenger) {
         return passengerRepository.save(passenger);
     }
