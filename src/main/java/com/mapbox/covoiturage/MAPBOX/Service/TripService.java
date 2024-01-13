@@ -1,6 +1,7 @@
 package com.mapbox.covoiturage.MAPBOX.Service;
 
 import com.mapbox.covoiturage.MAPBOX.Entity.Driver;
+import com.mapbox.covoiturage.MAPBOX.Entity.Passenger;
 import com.mapbox.covoiturage.MAPBOX.Entity.Trip;
 import com.mapbox.covoiturage.MAPBOX.Repository.TripRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public class TripService {
     }
 
     public Trip createTrip(Trip trip) {
+        trip.setIsOpen(true);
         return tripRepository.save(trip);
     }
 
@@ -40,6 +42,25 @@ public class TripService {
 
     public Trip getTripByDriverUserId(String id){
         Driver driver = driverService.getDriverByUserId(id);
-        return tripRepository.findByDriver(driver).getFirst();
+
+        List<Trip> trips=tripRepository.findByDriverAndIsOpen(driver,true);
+        
+
+        if(trips.size()==0)
+            return null;
+            
+        
+        return trips.getFirst();
     }
+
+    public void addPassengerToPendingList(String tripId,Passenger p){
+        Trip trip = tripRepository.findById(tripId).get();
+
+        List<Passenger> pending=trip.getPendingPassengers();
+        pending.add(p);
+        trip.setPendingPassengers(pending);
+        
+        tripRepository.save(trip);
+    }
+
 }
